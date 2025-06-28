@@ -3,10 +3,18 @@ from pydantic import BaseModel
 from joblib import load
 import requests
 
+
+
+
+
 # ----------------------------
 # Initialize App
 # ----------------------------
 app = FastAPI(title="Personalized Quote Generator")
+
+@app.get("/")
+def root():
+    return {"message": "🚀 API is live and ready!"}
 
 # ----------------------------
 # Load Model & Vectorizer
