@@ -65,6 +65,8 @@ def generate_quote(user_input: UserInput):
     try:
         # Fetch quote from ZenQuotes
         response = requests.get("https://zenquotes.io/api/random", timeout=10)
+        print("ZenQuotes response raw:", response.text)
+
         if response.status_code == 200:
             data = response.json()
             if isinstance(data, list) and data:
