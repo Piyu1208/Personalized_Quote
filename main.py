@@ -3,7 +3,7 @@ from pydantic import BaseModel
 from joblib import load
 import requests
 from fastapi.middleware.cors import CORSMiddleware
-
+from fastapi import Body
 
 
 
@@ -49,7 +49,7 @@ class UserInput(BaseModel):
 # Predict Endpoint
 # ----------------------------
 @app.post("/predict")
-def generate_quote(user_input: UserInput):
+def generate_quote(user_input: UserInput = Body(...)):
     text = user_input.text.strip()
 
     if not text:
